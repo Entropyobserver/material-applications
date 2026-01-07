@@ -1,7 +1,7 @@
-FROM node:16
-
-COPY . .
-
+FROM node:18-bullseye
+WORKDIR /app
+COPY package*.json ./
+RUN npm cache clean --force
 RUN npm install
-
-CMD node index.js
+COPY . .
+CMD ["node", "index.js"]
